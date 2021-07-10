@@ -1,5 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
+from models.post_body import PostBody
+from models.post_response import post_response
 
 from scrapers import web_scraper
 from actions import list_request_log_dict, get_request_log_dict
@@ -11,9 +13,11 @@ app = FastAPI(
 )
 v1 = app
 
-@v1.get("/get_href")
-def get_href():
-    return web_scraper.get_href('https://www.geeksforgeeks.org/')
+@v1.post("/get_href")
+def get_href(post_body:PostBody):
+    request_log_result = web_scraper.get_href(post_body.url)
+    print(request_log_result)
+    return post_response(request_log_result["uuid"], request_log_result["payload"])
 
 @v1.get("/get_requests_launched")
 def get_requests_launched():

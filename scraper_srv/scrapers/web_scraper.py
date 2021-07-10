@@ -19,5 +19,4 @@ def get_href(url):
 
     request_log_dict = request_log.request_log(start_date, end_date, "web", "href", urls)
     PersistanceRequestLogDict.persist_entity(request_log_dict)
-
-    return urls
+    return request_log_dict

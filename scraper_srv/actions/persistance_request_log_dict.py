@@ -1,10 +1,11 @@
 import sys
+import os
 from pymongo import MongoClient
 
 class PersistanceRequestLogDict():
     def persist_entity(request):
         try:
-            client = MongoClient("127.0.0.1", 27017)
+            client = MongoClient(os.environ['DB_HOST'], 27017)
             db = client.scraper_database
             collection = db["scraper_logs"]
 

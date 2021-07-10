@@ -6,8 +6,9 @@ services:
         ports: 
             - "8081:8080"
         environment: 
-            - URL_TO_SCRAP=0
-    database:
+            - URL_TO_SCRAP2=https://www.xataka.com/
+            - DB_HOST=mongodb
+    mongodb:
         image : mongo
         environment:
             - PUID=1000

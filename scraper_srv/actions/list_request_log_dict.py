@@ -1,10 +1,11 @@
 import sys
+import os
 import json
 from pymongo import MongoClient
 
 def get_entity_list():
     try:
-        client = MongoClient("127.0.0.1", 27017)
+        client = MongoClient(os.environ['DB_HOST'], 27017)
         db = client.scraper_database
         collection = db["scraper_logs"]
         
