@@ -6,13 +6,14 @@ services:
         ports: 
             - "8081:8080"
         environment: 
-            - URL_TO_SCRAP="https://meneame.net"
-    postgres:
-        image: 'postgres:latest'
-        restart: always
-        volumes:
-            - './postgres_data:/var/lib/postgresql/data'
+            - URL_TO_SCRAP=0
+    database:
+        image : mongo
         environment:
-            - POSTGRES_PASSWORD=arm001
+            - PUID=1000
+            - PGID=1000
+        volumes:
+            - /mongodb/database:/data/db
         ports:
-            - '5432:5432'
+            - 27017:27017
+        restart: unless-stopped
