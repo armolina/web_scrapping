@@ -19,15 +19,14 @@ def test_given_persist_data_from_mongodb_repository_when_persistance_request_log
 
     MongoDBRepository.persistData.assert_called()
 
-def test_persist_data(mocker):
-    request_log = mocker.Mock()
-    request_log.uuid=1
-
+def test_given_all_parameters_when_persistance_requestst_is_called_with_url(mocker):
     mocker.patch.object(web_scraper, 'get_href')
     mocker.patch.object(MongoDBRepository, 'persistData')
 
     url = "http://dummy.com"
 
-    assert persistance_request_log_dict.persist_request_log(url) == request_log
+    result = persistance_request_log_dict.persist_request_log(url)
 
-
+    assert 'uuid' in  result
+    assert 'start_date' in  result
+    assert 'end_date' in  result

@@ -4,7 +4,7 @@ Currently, this application has two different ways to work:
 - Second, if we don't set URL_TO_SCRAP environment variable the application launch an uvicorn service with a FastAPI application.
 
 
-docker-compose.yml to run automatically from docker
+docker-compose.yml to runfrom docker and scrap URL_TO_SCRAP automatically
 ```
 version: "3.3"
 
@@ -61,7 +61,42 @@ docker-compose --build
 http://127.0.0.1:8081/api/v1/docs
 ```
 
-# Testing
+# Prepare environment
+
+Crate a workspace folder, for example:
+
+```
+$ mkdir ~/workspaces
+```
+
+Download project from repository
+```
+$ git clone https://github.com/armolina/web_scrapping.git
+```
+
+Crate local environment to work isolated from operative system
+```
+$ cd scraper_srv
+$ python3 -m venv env
+$ source /env/bin/activate
+```
+
+Install project requirements
+```
+$ pip3 install -r requirements.txt
+```
+
+Export sysvar with mongodb IP
+```
+$ export DB_HOST=127.0.0.1
+```
+
+Run application and take fun!
+```
+$ pyton3 app.py
+```
+
+# Testing and coverage
 ## Lauch tests
 ```
 coverage run -m --rcfile=.coveragec pytest
