@@ -1,12 +1,6 @@
 version: "3.3"
 
 services:
-    scraper_srv:
-        build: ./scraper_srv
-        ports: 
-            - "8081:8080"
-        environment: 
-            - DB_HOST=mongodb
     mongodb:
         image : mongo
         environment:
@@ -17,3 +11,10 @@ services:
         ports:
             - 27017:27017
         restart: unless-stopped
+    scraper_srv:
+        build: ./scraper_srv
+        ports: 
+            - "8081:8080"
+        environment: 
+            - URL_TO_SCRAP=https://www.xataka.com/
+            - DB_HOST=mongodb

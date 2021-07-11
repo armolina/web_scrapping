@@ -9,6 +9,10 @@ class MongoDBRepository:
         collection = db["scraper_logs"]
         return collection
 
+
+    def test():
+        print("2hols")
+
     def getDataById(value_to_search):
         try:
             collection = MongoDBRepository.__connect()

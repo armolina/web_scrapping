@@ -1,6 +1,6 @@
 import uvicorn
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from models.post_body import PostBody
 from models.post_response import post_response
 
@@ -15,8 +15,11 @@ v1 = app
 
 @v1.post("/get_href")
 def get_href(post_body:PostBody):
-    request_log = persistance_request_log_dict.persist_request_log(post_body.url)
-    return post_response(request_log["uuid"], request_log["payload"])
+    if(post_body.url!=''):
+        request_log = persistance_request_log_dict.persist_request_log(post_body.url)
+        return post_response(request_log["uuid"], request_log["payload"])
+    else:
+        raise HTTPException(status_code=400, detail="Some needed parameter is null")
 
 @v1.get("/get_requests_launched")
 def get_requests_launched():
