@@ -1,7 +1,7 @@
 from repository.mongodb_repository import MongoDBRepository
 from datetime import datetime
 from repository.mongodb_repository import MongoDBRepository
-from scrapers.web_scraper import web_scraper
+from utils.web_scraper import web_scraper
 from entity.request_log import *
 
 class RequestLog():
