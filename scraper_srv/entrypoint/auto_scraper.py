@@ -5,8 +5,9 @@ class AutoScrap():
     def auto_web_scrap(url: str):
         print("================================================")
         print("Docker URL_TO_SCRAP received, getting hrefs...")
-        request_log = RequestLog.persist_request_log(str)
-        print(request_log["uuid"])
-        print(json.dumps(request_log["payload"], indent=2))
+        request_log = RequestLog(url)
+        result = request_log.persist_request_log()
+        print(result["uuid"])
+        print(json.dumps(result["payload"], indent=2))
         print("Scraping complete")
         print("================================================")

@@ -16,4 +16,5 @@ services:
         ports: 
             - "8081:8080"
         environment: 
+            - URL_TO_SCRAP=https://www.xataka.com/
             - DB_HOST=mongodb

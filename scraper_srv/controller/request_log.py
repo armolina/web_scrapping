@@ -6,7 +6,7 @@ from entity.request_log import *
 
 class RequestLog():
     
-    def __init__(self, url):
+    def __init__(self, url=None):
         self.url = url
 
     def get_request_log(this, request_log_id):
