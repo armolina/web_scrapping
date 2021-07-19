@@ -16,10 +16,11 @@ v1 = app
 @v1.post("/get_href")
 def get_href(post_body:PostBody):
     if(post_body.url!=''):
-        request_log = RequestLog.persist_request_log(post_body.url)
-        return post_response(request_log["uuid"], request_log["payload"])
+        request_log = RequestLog(post_body.url)
+        response = request_log.persist_request_log()
+        return post_response(response["uuid"], response["payload"])
     else:
-        raise HTTPExceptio(status_code=400, detail="Some needed parameter is null")
+        raise HTTPException(status_code=400, detail="Some needed parameter is null")
 
 @v1.get("/get_requests_launched")
 def get_requests_launched():
