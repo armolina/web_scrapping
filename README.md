@@ -77,7 +77,8 @@ $ git clone https://github.com/armolina/web_scrapping.git
 Crate local environment to work isolated from operative system
 ```
 $ cd scraper_srv
-$ python3 -m venv env
+$ python3 -m venv env #linux
+$ .\env\Scripts\activate #windows
 $ source /env/bin/activate
 ```
 

@@ -4,7 +4,7 @@ from pymongo import MongoClient
 
 class MongoDBRepository:
     def __connect():
-        client = MongoClient(os.environ['DB_HOST'], 27017)
+        client = MongoClient(os.environ.get('DB_HOST'), 27017)
         db = client.scraper_database
         collection = db["scraper_logs"]
         return collection
