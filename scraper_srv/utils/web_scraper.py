@@ -1,10 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 class web_scraper():
-
-    deep: int = 0
-
     def get_href(url: str):
+
         reqs = requests.get(url)
         soup = BeautifulSoup(reqs.text, 'html.parser')
         
